@@ -46,36 +46,17 @@ Este projeto é uma aplicação de **gerenciamento de produtos**, onde usuários
     cd seu-repositorio
     ```
 
-2. Crie e ative o ambiente virtual (opcional, mas recomendado):
+2. Suba os containers com o comando:
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # Linux/Mac
-    venv\Scripts\activate     # Windows
     ```
-
-3. Instale as dependências:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Realize as migrações do banco de dados:
-
-    ```bash
-    python manage.py migrate
+    docker-compose up
     ```
 
 5. Crie um superusuário (opcional para acessar o painel de administração do Django):
 
-    ```bash
-    python manage.py createsuperuser
     ```
-
-6. Inicie o servidor de desenvolvimento:
-
-    ```bash
-    python manage.py runserver
+    docker-compose  exec -it web bash # Comando para interagir com o bash do container
+    python manage.py createsuperuser # Criar super usuário
     ```
 
 7. O sistema estará rodando em `http://127.0.0.1:8000/` por padrão.
@@ -101,3 +82,22 @@ Este projeto é uma aplicação de **gerenciamento de produtos**, onde usuários
   "username": "usuario",
   "password": "senha"
 }
+```
+
+### 2. **Buscar Produto**
+
+- **URL:** `/api/v1/products`
+- **Header:** 
+```json
+{
+    "Authorization": "Bearer <token>"
+}
+```
+- **Método:** `GET`
+- **Parâmetros:**
+  - `name`: Nome do produto
+**Exemplo de requisição:**
+```query
+http://127.0.0.1:8000/api/v1/products?name=Teclado
+
+```
