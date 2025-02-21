@@ -52,14 +52,19 @@ Este projeto é uma aplicação de **gerenciamento de produtos**, onde usuários
     docker-compose up
     ```
 
-5. Crie um superusuário (opcional para acessar o painel de administração do Django):
+3. Crie um superusuário:
 
     ```
     docker-compose  exec -it web bash # Comando para interagir com o bash do container
     python manage.py createsuperuser # Criar super usuário
     ```
 
-7. O sistema estará rodando em `http://127.0.0.1:8000/` por padrão.
+4. Criar os grupos:
+```
+  É necessário a criação de 3 grupos: SUPERVISORS, ANALYSTS e CLIENTS. Esses grupos tem as permissões que citamos anteriormente que são os requisitos do desafio técnico.
+```
+
+5. O sistema estará rodando em `http://127.0.0.1:8000/` por padrão.
 
 ---
 

@@ -18,4 +18,4 @@ EXPOSE 8000
 
 # Garantir que as migrações sejam feitas apenas quando o container for iniciado
 # O comando a seguir será executado quando o container for iniciado
-CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+CMD python manage.py makemigrations core && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
