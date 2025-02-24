@@ -32,9 +32,6 @@ Este projeto é uma aplicação de **gerenciamento de produtos**, onde usuários
 ## Instalação
 
 ### Pré-requisitos
-
-- Python 3.x
-- Pip
 - Docker
 
 ### Passos
