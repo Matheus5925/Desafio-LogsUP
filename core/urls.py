@@ -34,5 +34,5 @@ urlpatterns = [
     path("", login_view, name="login"),
     path('logout/', logout_view, name='logout'),  # A URL do logout
     path('api/v1/', include(router.urls)),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Gera o JWT
+    path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Gera o JWT
 ]

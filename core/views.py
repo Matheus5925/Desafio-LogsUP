@@ -28,10 +28,9 @@ def register_view(request):
         print(request.POST)
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            print('form is valid')
             return UserService.register(form, request)
         else:
-            print(form.errors)
+            messages.error(request, "Corrija os erros abaixo e tente novamente.") 
     else:
         form = UserRegistrationForm()
 
@@ -92,7 +91,7 @@ def product_create(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             product = form.save(commit=False)
-            product.creator = request.user  # Atribui o usuário logado ao campo creator
+            product.creator_id = request.user  # Atribui o usuário logado ao campo creator
             product.save()  #
             return redirect('products')  # Redireciona para a lista de produtos
     else:

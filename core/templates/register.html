@@ -21,6 +21,15 @@
             width: 100%;
         }
     </style>
+    <script>
+        setTimeout(function() {
+            document.querySelectorAll(".alert").forEach(alertBox => {
+                alertBox.style.transition = "opacity 0.5s ease-out";
+                alertBox.style.opacity = "0";
+                setTimeout(() => alertBox.remove(), 500);
+            });
+        }, 5000);
+    </script>
 </head>
 <body>
     <div class="container">
@@ -31,6 +40,18 @@
                 {% for message in messages %}
                     <p class="mb-0">{{ message }}</p>
                 {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li><strong>{{ field|title }}:</strong> {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
             </div>
         {% endif %}
 
