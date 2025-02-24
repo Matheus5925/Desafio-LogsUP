@@ -9,9 +9,11 @@ class UserService:
   def register(form_data_user, request):
     user = form_data_user.save(commit=False)
     user.save()
+    print(user)
     default_group, created = Group.objects.get_or_create(name="CLIENTS")
     user.groups.add(default_group)
-    login(request, user)
+    teste = login(request, user)
+    print(teste)
     return redirect("home")
 
   @staticmethod

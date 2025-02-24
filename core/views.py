@@ -23,11 +23,15 @@ class ProductViewSet(viewsets.ModelViewSet):
         return ProductService.get_all(name)
 
 
-def register(request):
+def register_view(request):
     if request.method == "POST":
+        print(request.POST)
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-          return UserService.register(form, request)
+            print('form is valid')
+            return UserService.register(form, request)
+        else:
+            print(form.errors)
     else:
         form = UserRegistrationForm()
 

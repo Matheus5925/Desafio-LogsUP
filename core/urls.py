@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import register, list_products, login_view, ProductViewSet, delete_product, product_create, change_product, home, logout_view
+from .views import register_view, list_products, login_view, ProductViewSet, delete_product, product_create, change_product, home, logout_view
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -25,7 +25,7 @@ router.register(r'products', ProductViewSet, basename='product')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("register/", register, name="register"),
+    path("register/", register_view, name="register"),
     path("home/", home, name="home"),
     path("products/", list_products, name="products"),
     path("products/edit/<int:product_id>/", change_product, name="product_edit"),
